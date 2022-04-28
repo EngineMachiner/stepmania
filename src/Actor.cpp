@@ -165,6 +165,7 @@ Actor::Actor()
 	m_FakeParent= nullptr;
 	m_bFirstUpdate = true;
 	m_tween_uses_effect_delta= false;
+	m_replaytween = false;
 }
 
 Actor::~Actor()
@@ -970,7 +971,9 @@ void Actor::UpdateInternal(float delta_time)
 	{
 		delta_time= m_fEffectDelta;
 	}
+
 	this->UpdateTweening(delta_time);
+
 }
 
 RString Actor::GetLineage() const

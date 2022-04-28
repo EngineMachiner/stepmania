@@ -39,6 +39,22 @@ Sprite::Sprite()
 	m_fTexCoordVelocityX = 0;
 	m_fTexCoordVelocityY = 0;
 	m_use_effect_clock_for_texcoords= false;
+
+}
+
+void Sprite::ReplayTween()
+{
+
+	m_iCurState = 0;
+	m_fSecsIntoState = 0.0f;
+	m_animation_length_seconds = 0.0f;
+
+	m_fSecsIntoEffect = 0;
+	m_fEffectDelta = 0;
+	// SetDiffuseColor(RageColor(rand() % 1000 * 0.001, rand() % 1000 * 0.001, rand() % 1000 * 0.001, 1));
+
+	UpdateInternal(0);
+
 }
 
 // NoteSkinManager needs a sprite with a texture set to return in cases where
@@ -1186,6 +1202,7 @@ public:
 	static int addimagecoords( T* p, lua_State *L )		{ p->AddImageCoords( FArg(1),FArg(2) ); COMMON_RETURN_SELF; }
 	static int setstate( T* p, lua_State *L )		{ p->SetState( IArg(1) ); COMMON_RETURN_SELF; }
 	static int GetState( T* p, lua_State *L )		{ lua_pushnumber( L, p->GetState() ); return 1; }
+	static int replaytween(T* p, lua_State* L) { p->ReplayTween(); COMMON_RETURN_SELF; }
 	static int SetStateProperties(T* p, lua_State* L)
 	{
 		// States table example:
@@ -1334,6 +1351,7 @@ public:
 		ADD_METHOD( SetAllStateDelays );
 		ADD_METHOD(GetDecodeMovie);
 		ADD_METHOD(SetDecodeMovie);
+		ADD_METHOD(replaytween);
 	}
 };
 

@@ -64,6 +64,7 @@ public:
 
 	RString	GetTexturePath() const;
 
+	void ReplayTween();
 	void SetCustomTextureRect( const RectF &new_texcoord_frect );
 	void SetCustomTextureCoords( float fTexCoords[8] );
 	void SetCustomImageRect( RectF rectImageCoords );	// in image pixel space
@@ -98,6 +99,8 @@ public:
 	bool m_DecodeMovie;
 
 	bool m_use_effect_clock_for_texcoords;
+
+	bool m_replaytween;
 
 protected:
 	void LoadFromTexture( RageTextureID ID );

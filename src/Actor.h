@@ -706,6 +706,7 @@ protected:
 	float m_effect_period;
 	EffectClock m_EffectClock;
 	bool m_tween_uses_effect_delta;
+	bool m_replaytween;
 
 	/* This can be used in lieu of the fDeltaTime parameter to Update() to
 	 * follow the effect clock.  Actor::Update must be called first. */
